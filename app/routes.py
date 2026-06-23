@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from typing import List, Optional
 
-from .models import Product, ProductCreate
-from . import database
+from app.models import Product, ProductCreate
+from app import database
 
 router = APIRouter(prefix="/products", tags=["Inventory"])
 
@@ -42,7 +42,7 @@ def get_product(product_id: int) -> Product:
 
 
 
-router.put("/{product_id}", response_model=Product)
+@router.put("/{product_id}", response_model=Product)
 def update_product(product_id: int, product_in: ProductCreate) -> Product:
     for product in database.INVENTORY:
         if product.id == product_id:
