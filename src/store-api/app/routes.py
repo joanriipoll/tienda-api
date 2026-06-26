@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from typing import List, Optional
 
-from app.models import Product, ProductCreate
-from app import database
+from models import Product, ProductCreate
+import database
 
 router = APIRouter(prefix="/products", tags=["Inventory"])
 
