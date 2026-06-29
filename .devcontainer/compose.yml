@@ -1,0 +1,18 @@
+services:
+  workspace:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    # 2. Mantenemos el contenedor vivo e interactivo en segundo plano
+    stdin_open: true
+    tty: true
+
+    volumes:
+      # TÚNEL DE CÓDIGO: Conecta la raíz del proyecto con la carpeta /workspace del contenedor
+      - ..:/workspace:cached
+
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    # 4. Configuración de Red Avanzada para desarrollo local
+    network_mode: host
