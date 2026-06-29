@@ -1,19 +1,21 @@
-#!/bin/bash
+#!/bin/sh
 
-echo "[Host] Iniciando preparativos en el sistema anfitrión..."
+# This script is run when the dev container is started.
+# And will run specific commands based on the operating system.
 
-OS_TYPE=$(uname -s)
-case "$OS_TYPE" in
-    Darwin)
-        echo "[Host] Detectado entorno macOS."
-        ;;
-    Linux)
-        echo "[Host] Detectado entorno Linux. Asegurando huellas de ~/.ssh..."
-        mkdir -p ~/.ssh && chmod 700 ~/.ssh
-        ;;
-    *)
-        echo "[Host] Sistema operativo no identificado: $OS_TYPE"
-        ;;
+# Detect the HOST operating system
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
 esac
 
-echo "[Host] Preparativos completados con éxito."
+echo "Working on: $machine"
+
+# For Mac and Linux: add SSH keys found under ~/.ssh
+if [ "$machine" = "Mac" ] || [ "$machine" = "Linux" ]; then
+    find ~/.ssh/ -type f -exec grep -l 'PRIVATE' {} \; | xargs -I{} ssh-add "{}"
+fi

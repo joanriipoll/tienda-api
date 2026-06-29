@@ -2,4 +2,4 @@
 
 sudo chmod 666 /var/run/docker.sock
 
-echo "[Terminal] Conexión DooD verificada y permisos alineados."
+echo "[Terminal] DooD connection verified and permissions aligned."
