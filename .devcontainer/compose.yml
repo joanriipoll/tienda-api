@@ -3,7 +3,7 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-    # 2. Keep alive the container in second plane
+    # Keep alive the container in background
     command: sleep infinity
     volumes:
       - ..:/workspace:cached
