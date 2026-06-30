@@ -3,17 +3,11 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-
     # 2. Keep alive the container in second plane
-    stdin_open: true
-    tty: true
-
+    command: sleep infinity
     volumes:
-      
       - ..:/workspace:cached
-
       - /var/run/docker.sock:/var/run/docker.sock
-
     extra_hosts:
       - "host.docker.internal:host-gateway"
       - "localhost:host-gateway"
