@@ -26,20 +26,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pipx \
     locales \
     tree \
-    tzdata \
-    sudo \
-    docker.io \
-    git \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN userdel -r ubuntu || true
-RUN groupadd --gid ${USER_GID} ${USERNAME} \
-    && useradd --uid ${USER_UID} --gid ${USER_GID} -m -s /bin/bash ${USERNAME} \
-    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
-    && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers 
-    
+RUN userdel -r ubuntu 2>/dev/null || true \
+    && groupdel ubuntu 2>/dev/null || true \
+    && groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m -s /bin/bash $USERNAME
+
+
 WORKDIR /workspace
-RUN chown -R ${USER_UID}:${USER_GID} /workspace
-USER ${USERNAME}
+USER $USERNAME
