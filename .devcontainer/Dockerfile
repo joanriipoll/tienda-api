@@ -15,7 +15,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
 
 
-#Herraminetas para que funicone
+#Tools for development
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     procps \
