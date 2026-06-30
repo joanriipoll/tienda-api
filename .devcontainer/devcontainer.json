@@ -11,8 +11,8 @@
             ]
         }
     },
-    "initializeCommand": "./.devcontainer/init-command.sh",
-    "postCreateCommand": "./.devcontainer/post-create.sh",
-    "postAttachCommand": "./.devcontainer/post-attach.sh",
+    "initializeCommand": ".devcontainer/init-command.sh",
+    "postCreateCommand": ".devcontainer/post-create.sh",
+    "postAttachCommand": ".devcontainer/post-attach.sh",
     "remoteUser": "app"
 }
