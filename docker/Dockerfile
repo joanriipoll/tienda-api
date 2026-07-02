@@ -8,6 +8,8 @@ COPY src/store-api/pyproject.toml src/store-api/uv.lock ./
 
 RUN uv sync --frozen --no-dev
 
+ENV PATH="/app/.venv/bin:$PATH"
+
 COPY src/store-api/app ./app
 
 ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
