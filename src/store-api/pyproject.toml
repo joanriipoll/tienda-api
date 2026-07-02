@@ -1,0 +1,25 @@
+[project]
+name = "store-api"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "pyrefly",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"] 
+
+[tool.pyrefly]
+strict = true
+check_untyped_defs = true
