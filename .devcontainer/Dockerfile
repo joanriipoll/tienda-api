@@ -1,5 +1,6 @@
 FROM ubuntu:24.04
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 ENV DEBIAN_FRONTEND=noniteractive
 ENV TZ=Europe/Madid
