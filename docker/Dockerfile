@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY src/store-api/pyproject.toml src/store-api/uv.lock ./
 
-RUN uv pip install --system -r pyproject.toml
+RUN uv sync --frozen --no-dev
 
 COPY src/store-api/app ./app
 

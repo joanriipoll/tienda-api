@@ -7,7 +7,7 @@ git config --global core.autocrlf false
 
 cd /workspace/src/store-api
 
-uv sync
+uv sync --all-extras all-groups
 
 echo "========================================================"
 echo "Environment completed and dependencies deployed"
