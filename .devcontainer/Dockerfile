@@ -1,5 +1,5 @@
-FROM ubuntu:24.04
-
+ARG VARIANT="3.13-trixie"
+FROM mcr.microsoft.com/vscode/devcontainers/python:${VARIANT}
 
 ENV DEBIAN_FRONTEND=noniteractive
 ENV TZ=Europe/Madid
@@ -30,11 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN userdel -r ubuntu 2>/dev/null || true \
-    && groupdel ubuntu 2>/dev/null || true \
-    && groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m -s /bin/bash $USERNAME
-
+RUN pip install --upgrade pip uv ruff
 
 WORKDIR /workspace
-USER $USERNAME
+USER vscode

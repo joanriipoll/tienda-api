@@ -3,7 +3,7 @@
     "dockerComposeFile": "compose.yml",
     "service": "workspace",
     "workspaceFolder": "/workspace",
-    "remoteUser": "app",
+    "remoteUser": "vscode",
     "initializeCommand": ".devcontainer/init-command.sh",
     "postCreateCommand": ".devcontainer/post-create.sh",
     "postAttachCommand": ".devcontainer/post-attach.sh",
@@ -13,14 +13,12 @@
             "configureZshAsDefaultShell": true,
             "installOhMyZsh": true,
             "installOhMyZshConfig": true,
-            "username": "app",
+            "username": "vscode",
             "userUid": "1000",
             "userGid": "1000"
         },
         "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-            "version": "latest",
-            "enableNonRootDocker": true,
-            "installDockerComposeV2": true
+            "moby": false
         }
     },
     "customizations": {
