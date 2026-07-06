@@ -8,9 +8,11 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = [
+quality-assurance = [
     "ruff",
     "pyrefly",
+    "pytest",
+    "httpx"
 ]
 
 [tool.ruff]
@@ -23,3 +25,8 @@ select = ["E", "F", "I"]
 [tool.pyrefly]
 strict = true
 check_untyped_defs = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]
