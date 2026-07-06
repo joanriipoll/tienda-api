@@ -1,7 +1,5 @@
 from typing import List, Optional
-
 from fastapi import APIRouter, HTTPException
-
 from app import database
 from app.models import Product, ProductCreate
 

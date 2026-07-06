@@ -1,4 +1,6 @@
-def test_create_e2e(client):
+from fastapi.testclient import TestClient
+
+def test_create_e2e(client: TestClient):
     payload = {
         "name": "Mechanical Keyboard", 
         "price": 120.50,
@@ -15,7 +17,7 @@ def test_create_e2e(client):
     assert data["category"] == "Electronics"
 
 
-def test_validation_guardrails_e2e(client):
+def test_validation_guardrails_e2e(client: TestClient):
     bad_price_payload = {
         "name": "Gaming Mouse", 
         "price": -10.0,
@@ -36,7 +38,7 @@ def test_validation_guardrails_e2e(client):
     assert response_stock.status_code == 422
 
 
-def test_read_by_id_e2e(client):
+def test_read_by_id_e2e(client: TestClient):
     setup_payload = {
         "name": "Monitor", 
         "price": 300.0,
@@ -52,7 +54,7 @@ def test_read_by_id_e2e(client):
     assert response_invalid.status_code == 404
 
 
-def test_update_and_delete_e2e(client):
+def test_update_and_delete_e2e(client: TestClient):
     initial_payload = {
         "name": "Headphones", 
         "price": 50.0,
