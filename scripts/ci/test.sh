@@ -2,6 +2,6 @@
 
 set -e
 (
-cd "$(dirname "$0")/../../"
+cd "$PROJECT_PATH"
 uv run --project src/store-api pytest tests/ -v
 )
