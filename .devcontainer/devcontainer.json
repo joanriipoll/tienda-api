@@ -7,6 +7,9 @@
     "initializeCommand": ".devcontainer/init-command.sh",
     "postCreateCommand": ".devcontainer/post-create.sh",
     "postAttachCommand": ".devcontainer/post-attach.sh",
+    "containerEnv": {
+        "PYTHONPATH": "/workspace/src/store-api"
+    },
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {
             "installZsh": true,
