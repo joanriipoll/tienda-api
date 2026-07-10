@@ -39,6 +39,8 @@ class ProductRepository:
             return None
         db_product.price = product_in.price
         db_product.stock = product_in.stock
+        db_product.name = product_in.name
+        db_product.category = product_in.category
         self.session.add(db_product)
         self.session.commit()
         self.session.refresh(db_product)
