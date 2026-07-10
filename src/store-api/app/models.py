@@ -1,14 +1,10 @@
-from pydantic import BaseModel, Field
+from typing import Optional
+from sqlmodel import SQLModel, Field
 
-
-class ProductCreate(BaseModel):
-    name: str
-    price: float = Field(gt=0, description="The price must be greater than zero.")
-    stock: int = Field(
-        ge=0, description="The stock must be greater than or equal to zero."
-    )
+class ProductDBModel(SQLModel, table=True):
+    __tablename__ = "products"
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = Field(index=True)
+    price: float
+    stock: int
     category: str
-
-
-class Product(ProductCreate):
-    id: int
