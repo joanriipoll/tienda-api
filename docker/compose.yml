@@ -5,5 +5,22 @@ services:
         dockerfile: docker/Dockerfile
       ports: 
         - "8000:8000"
-      
+  postgres:
+    image: postgres:16-alpine
+    container_name: store_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_password
+      POSTGRES_DB: store_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/postgres_data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+    
+
 
