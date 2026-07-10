@@ -1,13 +1,11 @@
 import os
-from sqlmodel import create_engine, Session
+from sqlmodel import create_engine
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if not DATABASE_URL:
-    raise RuntimeError("⚠️ La variable de entorno DATABASE_URL no está configurada.")
+    raise RuntimeError("Variable DATABASE_URL is not configured")
 
-engine = create_engine(DATABASE_URL, echo=True)
+DB_ECHO = os.getenv("DB_ECHO", "False").lower() in ("true", "1", "t", "yes")
 
-def get_session():
-    with Session(engine) as session:
-        yield session
+engine = create_engine(DATABASE_URL, echo=DB_ECHO)

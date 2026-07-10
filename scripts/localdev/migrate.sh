@@ -1,8 +1,8 @@
 #!/bin/bash
 
 set -e
-set -a
-source /workspace/.devcontainer/.env
-set +a
 cd /workspace/src/store-api
+if [ -z "$DATABASE_URL" ]; then
+    exit 1
+fi
 uv run alembic upgrade head
