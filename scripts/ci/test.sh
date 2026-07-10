@@ -1,7 +1,9 @@
 #!/bin/bash
-
 set -e
 (
-cd "$PROJECT_PATH"
-uv run --project src/store-api pytest tests/ -v
+  cd /workspace/src/store-api
+  set -a
+  source /workspace/.devcontainer/.env
+  set +a
+  PYTHONPATH=$(pwd) uv run python -m pytest ../../tests/store-api -v
 )
